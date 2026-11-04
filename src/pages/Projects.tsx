@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowUpRight, Github, ExternalLink, X } from 'lucide-react';
+import { ArrowUpRight, Github, ExternalLink, X, Clock, Sun, Calculator as CalcIcon, Layout, Sparkles, MessageSquare, Share2 } from 'lucide-react';
 import { Project } from '../types';
 
 interface ProjectsProps {
@@ -8,52 +8,123 @@ interface ProjectsProps {
 
 const projects: Project[] = [
   {
-    id: 'proj-1',
+    id: 'proj-archive',
     title: 'ARCHIVE',
     category: 'Digital Museum / Editorial',
     description: "Nigeria's Creative History Museum. An editorial digital platform exploring Nigerian photography, music, fashion and design.",
     technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Editorial Design'],
     year: '2026',
+    status: 'COMPLETED',
     liveUrl: '#',
     githubUrl: 'https://github.com/olamideolatunde079-spec'
   },
   {
-    id: 'proj-2',
+    id: 'proj-handyng',
     title: 'HandyNG',
-    category: 'Marketplace Concept / Local Services',
-    description: 'A local services marketplace concept connecting customers with trusted artisans and service providers, starting in Taraba State. Currently in development.',
+    category: 'Marketplace / Local Services',
+    description: 'A local services marketplace connecting customers with trusted artisans and service providers, starting in Taraba State.',
     technologies: ['React', 'Node.js', 'Express.js', 'Tailwind CSS'],
     year: '2026',
+    status: 'IN DEVELOPMENT',
     liveUrl: '#',
     githubUrl: 'https://github.com/olamideolatunde079-spec'
   },
   {
-    id: 'proj-3',
-    title: 'SmartChat',
-    category: 'Real-Time / Communication',
-    description: 'A real-time messaging application featuring a modern user interface, responsive messaging threads, and Supabase database integration.',
+    id: 'proj-obytchat',
+    title: 'OBytChat',
+    category: 'Messaging / Communication',
+    description: 'A WhatsApp-like messaging application for conversations and communication, providing a familiar, responsive chat experience.',
     technologies: ['React', 'Supabase', 'TypeScript', 'Tailwind CSS'],
     year: '2026',
+    status: 'COMPLETED',
     liveUrl: '#',
     githubUrl: 'https://github.com/olamideolatunde079-spec'
   },
   {
-    id: 'proj-4',
+    id: 'proj-obyts',
+    title: 'OByts',
+    category: 'Social Networking / Media',
+    description: 'A social networking application inspired by platforms like Instagram and other modern social media platforms for sharing visual content and updates.',
+    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Node.js'],
+    year: '2026',
+    status: 'COMPLETED',
+    liveUrl: '#',
+    githubUrl: 'https://github.com/olamideolatunde079-spec'
+  },
+  {
+    id: 'proj-obytgemini',
+    title: 'OBytGemini',
+    category: 'AI / Conversational Interface',
+    description: 'A Gemini-inspired AI chat application featuring multiple AI model integrations and a conversational assistant interface.',
+    technologies: ['React', 'Gemini API', 'TypeScript', 'Tailwind CSS'],
+    year: '2026',
+    status: 'COMPLETED',
+    liveUrl: '#',
+    githubUrl: 'https://github.com/olamideolatunde079-spec'
+  },
+  {
+    id: 'proj-clockin',
+    title: 'Clockin System',
+    category: 'Productivity / Management',
+    description: 'A time and attendance management system designed for tracking work hours, shifts, and employee punctuality with clean reporting.',
+    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'LocalStorage'],
+    year: '2026',
+    status: 'COMPLETED',
+    liveUrl: '#',
+    githubUrl: 'https://github.com/olamideolatunde079-spec'
+  },
+  {
+    id: 'proj-weather',
+    title: 'Weather App',
+    category: 'Utility / API Integration',
+    description: 'A weather application providing accurate meteorological information through a clean, responsive interface and animated atmospheric indicators.',
+    technologies: ['React', 'Weather API', 'Tailwind CSS', 'TypeScript'],
+    year: '2025',
+    status: 'COMPLETED',
+    liveUrl: '#',
+    githubUrl: 'https://github.com/olamideolatunde079-spec'
+  },
+  {
+    id: 'proj-calculator',
+    title: 'Calculator',
+    category: 'Utility / Interactive',
+    description: 'A functional calculator with a clean and intuitive user interface supporting advanced mathematical operations and keyboard input.',
+    technologies: ['React', 'JavaScript', 'Tailwind CSS'],
+    year: '2025',
+    status: 'COMPLETED',
+    liveUrl: '#',
+    githubUrl: 'https://github.com/olamideolatunde079-spec'
+  },
+  {
+    id: 'proj-carousel',
+    title: 'Lifestyle Carousel',
+    category: 'UI Component / Animation',
+    description: 'A visually engaging carousel project showcasing lifestyle content with interactive navigation, smooth transitions, and responsive touch support.',
+    technologies: ['React', 'Tailwind CSS', 'Framer Motion'],
+    year: '2025',
+    status: 'COMPLETED',
+    liveUrl: '#',
+    githubUrl: 'https://github.com/olamideolatunde079-spec'
+  },
+  {
+    id: 'proj-oblog',
     title: 'OBlog',
     category: 'Publishing / Developer Platform',
     description: 'A frontend-only developer blogging platform inspired by modern editorial publishing platforms with clean typography and dark mode styling.',
     technologies: ['HTML5', 'CSS3', 'JavaScript', 'Responsive Design'],
     year: '2025',
+    status: 'COMPLETED',
     liveUrl: '#',
     githubUrl: 'https://github.com/olamideolatunde079-spec'
   },
   {
-    id: 'proj-5',
+    id: 'proj-zenith',
     title: 'Zenith Bank UI Concept',
     category: 'Fintech / UI Design',
     description: 'A banking interface project exploring frontend development and modern digital banking design principles, account dashboards, and transaction flows.',
     technologies: ['React', 'Tailwind CSS', 'UI/UX Design'],
     year: '2025',
+    status: 'COMPLETED',
     liveUrl: '#',
     githubUrl: 'https://github.com/olamideolatunde079-spec'
   }
@@ -67,12 +138,12 @@ export const Projects: React.FC<ProjectsProps> = ({ onNavigate }) => {
       <div className="max-w-7xl mx-auto space-y-16">
         {/* Header */}
         <div className="space-y-4 border-b border-neutral-900 pb-12">
-          <div className="text-xs text-neutral-500 tracking-widest uppercase">PORTFOLIO</div>
-          <h1 className="text-5xl sm:text-7xl font-black tracking-tighter uppercase">
+          <div className="text-xs text-neutral-500 font-mono tracking-widest uppercase">PORTFOLIO ARCHIVE</div>
+          <h1 className="text-5xl sm:text-7xl font-black tracking-tighter uppercase font-['Space_Grotesk']">
             SELECTED PROJECTS.
           </h1>
           <p className="text-neutral-400 text-base max-w-xl leading-relaxed">
-            A showcase of digital platforms, web applications, and UI concepts built by Samson Olatunde.
+            A curated showcase of digital platforms, messaging apps, utilities, and UI concepts built by Samson Olatunde / OByt.
           </p>
         </div>
 
@@ -82,17 +153,23 @@ export const Projects: React.FC<ProjectsProps> = ({ onNavigate }) => {
             <div
               key={project.id}
               onClick={() => setSelectedProject(project)}
-              className="group p-8 bg-neutral-900/60 border border-neutral-800 rounded-2xl backdrop-blur-sm hover:border-neutral-600 transition-all cursor-pointer flex flex-col justify-between space-y-8"
+              className="group p-8 bg-neutral-900/60 border border-neutral-800 rounded-2xl backdrop-blur-sm hover:border-neutral-600 transition-all cursor-pointer flex flex-col justify-between space-y-8 relative overflow-hidden"
             >
+              {project.status === 'IN DEVELOPMENT' && (
+                <div className="absolute top-0 right-0 bg-yellow-500/10 border-b border-l border-yellow-500/30 px-4 py-1.5 rounded-bl-xl text-[10px] font-mono text-yellow-400 tracking-wider">
+                  IN DEVELOPMENT
+                </div>
+              )}
+
               <div className="space-y-4">
                 <div className="flex items-center justify-between text-xs text-neutral-500 font-mono">
                   <span>{project.year}</span>
-                  <span className="text-neutral-400">Verified Project</span>
+                  <span className="text-neutral-400">{project.status === 'IN DEVELOPMENT' ? 'In Progress' : 'Production Ready'}</span>
                 </div>
                 <h3 className="text-2xl sm:text-3xl font-bold text-white group-hover:text-neutral-300 transition-colors">
                   {project.title}
                 </h3>
-                <div className="text-xs text-neutral-400 uppercase tracking-widest">
+                <div className="text-xs text-neutral-400 uppercase tracking-widest font-mono">
                   {project.category}
                 </div>
                 <p className="text-neutral-300 text-sm leading-relaxed line-clamp-3">
@@ -113,10 +190,10 @@ export const Projects: React.FC<ProjectsProps> = ({ onNavigate }) => {
                 </div>
 
                 <div className="flex items-center justify-between text-xs font-bold text-white tracking-widest uppercase">
-                  <span className="flex items-center gap-1 group-hover:underline">
+                  <span className="flex items-center gap-1 group-hover:underline font-mono">
                     VIEW DETAILS <ArrowUpRight className="w-4 h-4" />
                   </span>
-                  <span className="text-neutral-500">{project.year}</span>
+                  <span className="text-neutral-500 font-mono">{project.year}</span>
                 </div>
               </div>
             </div>
@@ -135,9 +212,16 @@ export const Projects: React.FC<ProjectsProps> = ({ onNavigate }) => {
               </button>
 
               <div className="space-y-2">
-                <div className="text-xs text-neutral-500 font-mono">{selectedProject.year}</div>
+                <div className="flex items-center gap-3">
+                  <span className="text-xs text-neutral-500 font-mono">{selectedProject.year}</span>
+                  {selectedProject.status === 'IN DEVELOPMENT' && (
+                    <span className="px-2 py-0.5 bg-yellow-500/10 border border-yellow-500/30 rounded text-[10px] font-mono text-yellow-400">
+                      IN DEVELOPMENT
+                    </span>
+                  )}
+                </div>
                 <h2 className="text-3xl font-bold text-white">{selectedProject.title}</h2>
-                <div className="text-xs text-neutral-400 uppercase tracking-widest">{selectedProject.category}</div>
+                <div className="text-xs text-neutral-400 uppercase tracking-widest font-mono">{selectedProject.category}</div>
               </div>
 
               <p className="text-neutral-300 text-base leading-relaxed">
@@ -145,7 +229,7 @@ export const Projects: React.FC<ProjectsProps> = ({ onNavigate }) => {
               </p>
 
               <div className="space-y-2">
-                <div className="text-xs text-neutral-500 tracking-wider uppercase">TECHNOLOGIES</div>
+                <div className="text-xs text-neutral-500 tracking-wider uppercase font-mono">TECHNOLOGIES</div>
                 <div className="flex flex-wrap gap-2">
                   {selectedProject.technologies.map(tech => (
                     <span key={tech} className="px-3 py-1 bg-neutral-900 border border-neutral-800 text-xs text-neutral-300 rounded font-mono">
@@ -160,7 +244,7 @@ export const Projects: React.FC<ProjectsProps> = ({ onNavigate }) => {
                   href={selectedProject.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-6 py-3 bg-neutral-900 border border-neutral-800 text-white font-bold text-xs tracking-widest uppercase hover:bg-neutral-800 transition-colors flex items-center gap-2 cursor-pointer"
+                  className="px-6 py-3 bg-neutral-900 border border-neutral-800 text-white font-bold text-xs tracking-widest uppercase hover:bg-neutral-800 transition-colors flex items-center gap-2 cursor-pointer font-mono"
                 >
                   <span>GITHUB REPOSITORY</span>
                   <Github className="w-4 h-4" />
@@ -173,12 +257,12 @@ export const Projects: React.FC<ProjectsProps> = ({ onNavigate }) => {
         {/* CTA */}
         <div className="p-12 bg-neutral-900/60 border border-neutral-800 rounded-2xl backdrop-blur-sm flex flex-col sm:flex-row items-center justify-between gap-6">
           <div>
-            <h3 className="text-2xl font-bold text-white mb-2">Want to collaborate?</h3>
-            <p className="text-neutral-400 text-sm">Get in touch to discuss projects or opportunities.</p>
+            <h3 className="text-2xl font-bold text-white mb-2 font-['Space_Grotesk']">Want to collaborate?</h3>
+            <p className="text-neutral-400 text-sm">Get in touch to discuss projects or opportunities with OByt.</p>
           </div>
           <button
             onClick={() => onNavigate('/contact')}
-            className="px-8 py-4 bg-white text-black font-bold text-xs tracking-widest uppercase hover:bg-neutral-200 transition-colors flex items-center gap-2 cursor-pointer"
+            className="px-8 py-4 bg-white text-black font-bold text-xs tracking-widest uppercase hover:bg-neutral-200 transition-colors flex items-center gap-2 cursor-pointer font-mono"
           >
             <span>GET IN TOUCH</span>
             <ArrowUpRight className="w-4 h-4" />

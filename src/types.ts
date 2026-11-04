@@ -5,6 +5,7 @@ export interface Project {
   description: string;
   technologies: string[];
   year: string;
+  status?: 'IN DEVELOPMENT' | 'COMPLETED';
   liveUrl?: string;
   githubUrl?: string;
 }

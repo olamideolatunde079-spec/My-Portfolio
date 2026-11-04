@@ -28,13 +28,15 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
         {/* Logo */}
         <button 
           onClick={() => handleNavClick('/')}
-          className="group flex items-center gap-2 text-left focus:outline-none cursor-pointer"
+          className="group flex items-center gap-3 text-left focus:outline-none cursor-pointer"
         >
-          <span className="font-bold text-lg tracking-widest text-white uppercase group-hover:text-neutral-400 transition-colors">
+          <img 
+            src="/public/assets/aistudio/ObytLogo_565fc7e8.png" 
+            alt="OByt Logo" 
+            className="w-9 h-9 object-contain filter grayscale brightness-75 opacity-80 group-hover:opacity-100 transition-opacity"
+          />
+          <span className="font-bold text-lg tracking-widest text-white uppercase group-hover:text-neutral-400 transition-colors font-['Space_Grotesk']">
             OByt
-          </span>
-          <span className="hidden sm:inline-block text-xs text-neutral-500 tracking-wider">
-            / SAMSON OLATUNDE
           </span>
         </button>
 
@@ -58,12 +60,8 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
           })}
         </nav>
 
-        {/* Status Badge & Mobile Toggle */}
+        {/* Mobile Toggle */}
         <div className="flex items-center gap-4">
-          <div className="hidden lg:flex items-center gap-2 px-3 py-1 bg-neutral-900 border border-neutral-800 rounded-full text-xs text-neutral-300">
-            <span>OBYT</span>
-          </div>
-
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="md:hidden text-white p-2 focus:outline-none cursor-pointer"
@@ -91,10 +89,6 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
               </button>
             );
           })}
-          <div className="pt-4 flex items-center justify-between text-xs text-neutral-400">
-            <span>OBYT</span>
-            <span className="text-white">PORTFOLIO</span>
-          </div>
         </div>
       )}
     </header>
