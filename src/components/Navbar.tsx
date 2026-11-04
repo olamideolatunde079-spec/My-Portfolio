@@ -31,7 +31,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
           className="group flex items-center gap-3 text-left focus:outline-none cursor-pointer"
         >
           <img 
-            src="/public/assets/aistudio/ObytLogo_565fc7e8.png" 
+            src="/assets/aistudio/ObytLogo_565fc7e8.png" 
             alt="OByt Logo" 
             className="w-9 h-9 object-contain filter grayscale brightness-75 opacity-80 group-hover:opacity-100 transition-opacity"
           />

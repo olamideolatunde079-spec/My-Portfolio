@@ -61,7 +61,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
               <div className="relative bg-neutral-950/90 border border-neutral-800 rounded-2xl p-6 backdrop-blur-xl space-y-4 shadow-2xl">
                 <div className="flex items-center justify-between border-b border-neutral-800 pb-3 text-xs font-mono text-neutral-400">
                   <span className="flex items-center gap-2">
-                    <img src="/public/assets/aistudio/ObytLogo_565fc7e8.png" alt="OByt Logo" className="w-4 h-4 object-contain filter grayscale brightness-75 opacity-80" />
+                    <img src="/assets/aistudio/ObytLogo_565fc7e8.png" alt="OByt Logo" className="w-4 h-4 object-contain filter grayscale brightness-75 opacity-80" />
                     <span className="text-neutral-300">obyt.tsx</span>
                   </span>
                   <span className="text-neutral-500">OBYT</span>
@@ -69,7 +69,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
 
                 <div className="relative overflow-hidden rounded-xl border border-neutral-800 bg-black aspect-[4/3] flex items-center justify-center group-hover:scale-[1.02] transition-transform duration-500">
                   <img
-                    src="/public/assets/aistudio/WhatsApp_Image_2026-11-03_at_10.19.32_AM_06f84783.jpeg"
+                    src="/assets/aistudio/WhatsApp_Image_2026-11-03_at_10.19.32_AM_06f84783.jpeg"
                     alt="Samson Olatunde Coding Illustration"
                     className="w-full h-full object-contain p-4 filter contrast-125 invert-0 opacity-90 animate-pulse duration-[3000ms]"
                   />
@@ -180,7 +180,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
               </ul>
             </div>
 
-            <div className="p-8 bg-neutral-900/60 border border-neutral-800 rounded-2xl backdrop-blur-sm space-y-4">
+            <div className="p-8 bg-neutral-900/60 border border-neutral-800 rounded-lg backdrop-blur-sm space-y-4">
               <div className="p-3 bg-black border border-neutral-800 rounded-lg w-fit text-white">
                 <Terminal className="w-6 h-6" />
               </div>
