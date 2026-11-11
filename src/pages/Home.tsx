@@ -92,7 +92,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
       </section>
 
       {/* Intro Bio Section */}
-      <section className="py-24 px-6 max-w-7xl mx-auto border-b border-neutral-900">
+      <section className="py-16 px-6 max-w-7xl mx-auto border-b border-neutral-900">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           <div className="space-y-6">
             <div className="text-xs text-neutral-500 tracking-widest uppercase font-mono">INTRODUCTION</div>
@@ -129,7 +129,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
       </section>
 
       {/* Skills Summary Section */}
-      <section className="py-24 px-6 max-w-7xl mx-auto border-b border-neutral-900">
+      <section className="pt-16 pb-12 px-6 max-w-7xl mx-auto border-b border-neutral-900">
         <div className="space-y-12">
           <div className="space-y-4 max-w-xl">
             <div className="text-xs text-neutral-500 tracking-widest uppercase font-mono">EXPERTISE & SKILLS</div>

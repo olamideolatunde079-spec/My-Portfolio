@@ -1,5 +1,6 @@
 import React from 'react';
-import { ArrowUpRight, Code, Cpu, Layout, Terminal } from 'lucide-react';
+import { ArrowUpRight, Code, Cpu, Layout, Terminal, Sparkles } from 'lucide-react';
+import techImage from '../assets/about-tech.jpeg';
 
 interface AboutProps {
   onNavigate: (path: string) => void;
@@ -7,8 +8,8 @@ interface AboutProps {
 
 export const About: React.FC<AboutProps> = ({ onNavigate }) => {
   return (
-    <div className="text-white min-h-screen pt-32 pb-24 px-6">
-      <div className="max-w-7xl mx-auto space-y-20">
+    <div className="text-white min-h-screen pt-28 pb-12 px-6">
+      <div className="max-w-7xl mx-auto space-y-14">
         {/* Header */}
         <div className="space-y-4 border-b border-neutral-900 pb-12">
           <div className="text-xs text-neutral-500 tracking-widest uppercase">ABOUT ME</div>
@@ -21,8 +22,8 @@ export const About: React.FC<AboutProps> = ({ onNavigate }) => {
         </div>
 
         {/* Introduction Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-          <div className="space-y-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          <div className="lg:col-span-7 space-y-6">
             <h2 className="text-2xl font-bold text-white tracking-tight">INTRODUCTION</h2>
             <p className="text-neutral-300 text-base leading-relaxed">
               I&apos;m Samson Olatunde, a Frontend Developer and Graphic Designer passionate about building visually engaging, responsive and user-friendly digital experiences. I enjoy combining creative design with frontend development to transform ideas into functional digital products. I&apos;m also continuously developing my UI/UX design skills and exploring better ways to create meaningful digital experiences.
@@ -30,26 +31,55 @@ export const About: React.FC<AboutProps> = ({ onNavigate }) => {
             <p className="text-neutral-400 text-sm leading-relaxed">
               Based in Jalingo, Taraba State, Nigeria, I am currently pursuing my degree in Computer Science at Taraba State University, blending academic computer science principles with hands-on web development practice.
             </p>
+
+            <div className="p-6 bg-neutral-900/60 border border-neutral-800 rounded-2xl backdrop-blur-sm space-y-4">
+              <div className="text-xs text-neutral-500 tracking-widest uppercase font-mono">QUICK FACTS</div>
+              <div className="space-y-3 text-sm">
+                <div className="flex justify-between border-b border-neutral-800/80 pb-2.5">
+                  <span className="text-neutral-400">Name</span>
+                  <span className="text-white font-mono">Samson Olatunde</span>
+                </div>
+                <div className="flex justify-between border-b border-neutral-800/80 pb-2.5">
+                  <span className="text-neutral-400">Location</span>
+                  <span className="text-white font-mono">Jalingo, Taraba State, Nigeria</span>
+                </div>
+                <div className="flex justify-between border-b border-neutral-800/80 pb-2.5">
+                  <span className="text-neutral-400">Education</span>
+                  <span className="text-white font-mono">Taraba State University (Computer Science)</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-neutral-400">Focus</span>
+                  <span className="text-white font-mono">Frontend & UI Design</span>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div className="p-8 bg-neutral-900/60 border border-neutral-800 rounded-2xl backdrop-blur-sm space-y-6">
-            <div className="text-xs text-neutral-500 tracking-widest uppercase">QUICK FACTS</div>
-            <div className="space-y-4 text-sm">
-              <div className="flex justify-between border-b border-neutral-800 pb-3">
-                <span className="text-neutral-400">Name</span>
-                <span className="text-white font-mono">Samson Olatunde</span>
-              </div>
-              <div className="flex justify-between border-b border-neutral-800 pb-3">
-                <span className="text-neutral-400">Location</span>
-                <span className="text-white font-mono">Jalingo, Taraba State, Nigeria</span>
-              </div>
-              <div className="flex justify-between border-b border-neutral-800 pb-3">
-                <span className="text-neutral-400">Education</span>
-                <span className="text-white font-mono">Taraba State University (Computer Science)</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-neutral-400">Focus</span>
-                <span className="text-white font-mono">Frontend & UI Design</span>
+          {/* Minimalist Tech Aesthetic Card */}
+          <div className="lg:col-span-5 flex justify-center">
+            <div className="relative group w-full max-w-sm">
+              <div className="absolute -inset-1 bg-gradient-to-r from-neutral-700 to-neutral-500 rounded-2xl blur opacity-30 group-hover:opacity-60 transition duration-500"></div>
+              <div className="relative bg-neutral-950 border border-neutral-800 rounded-2xl p-5 backdrop-blur-sm space-y-4 shadow-2xl">
+                <div className="flex items-center justify-between border-b border-neutral-800 pb-2.5 text-xs font-mono text-neutral-400">
+                  <span className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
+                    <span>identity.tsx</span>
+                  </span>
+                  <span className="text-neutral-500 font-mono text-[10px]">OByt</span>
+                </div>
+
+                <div className="overflow-hidden rounded-xl bg-black border border-neutral-900 aspect-square flex items-center justify-center p-3 group-hover:scale-[1.02] transition-transform duration-500">
+                  <img
+                    src={techImage}
+                    alt="Tech Aesthetic by Samson Olatunde"
+                    className="w-full h-full object-contain filter contrast-125 brightness-110"
+                  />
+                </div>
+
+                <div className="p-3 bg-neutral-900/60 border border-neutral-800 rounded-lg text-xs font-mono text-neutral-300 flex items-center justify-between">
+                  <span className="text-neutral-400">// design &amp; code</span>
+                  <span className="text-emerald-400">● CREATIVE PRACTICE</span>
+                </div>
               </div>
             </div>
           </div>

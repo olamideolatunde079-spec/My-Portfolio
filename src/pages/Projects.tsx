@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ArrowUpRight, Github, ExternalLink, X, Clock, Sun, Calculator as CalcIcon, Layout, Sparkles, MessageSquare, Share2 } from 'lucide-react';
+import coderImage from '../assets/projects-coder.jpeg';
 import { Project } from '../types';
 
 interface ProjectsProps {
@@ -134,17 +135,50 @@ export const Projects: React.FC<ProjectsProps> = ({ onNavigate }) => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   return (
-    <div className="text-white min-h-screen pt-32 pb-24 px-6">
-      <div className="max-w-7xl mx-auto space-y-16">
-        {/* Header */}
-        <div className="space-y-4 border-b border-neutral-900 pb-12">
-          <div className="text-xs text-neutral-500 font-mono tracking-widest uppercase">PORTFOLIO ARCHIVE</div>
-          <h1 className="text-5xl sm:text-7xl font-black tracking-tighter uppercase font-['Space_Grotesk']">
-            SELECTED PROJECTS.
-          </h1>
-          <p className="text-neutral-400 text-base max-w-xl leading-relaxed">
-            A curated showcase of digital platforms, messaging apps, utilities, and UI concepts built by Samson Olatunde / OByt.
-          </p>
+    <div className="text-white min-h-screen pt-28 pb-12 px-6">
+      <div className="max-w-7xl mx-auto space-y-12">
+        {/* Header with Developer Avatar Illustration */}
+        <div className="border-b border-neutral-900 pb-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="lg:col-span-8 space-y-4">
+            <div className="text-xs text-neutral-500 font-mono tracking-widest uppercase">PORTFOLIO ARCHIVE</div>
+            <h1 className="text-5xl sm:text-7xl font-black tracking-tighter uppercase font-['Space_Grotesk']">
+              SELECTED PROJECTS.
+            </h1>
+            <p className="text-neutral-400 text-base max-w-xl leading-relaxed">
+              A curated showcase of digital platforms, messaging apps, utilities, and UI concepts built by Samson Olatunde / OByt.
+            </p>
+          </div>
+
+          <div className="lg:col-span-4 flex justify-center lg:justify-end">
+            <div className="relative group w-full max-w-[280px]">
+              <div className="absolute -inset-1.5 bg-gradient-to-r from-blue-600/40 via-cyan-500/30 to-indigo-600/40 rounded-2xl blur-xl opacity-50 group-hover:opacity-90 transition duration-500 animate-pulse"></div>
+              <div className="relative bg-neutral-950/95 border border-neutral-800 rounded-2xl p-4 backdrop-blur-xl space-y-3.5 shadow-2xl">
+                <div className="flex items-center justify-between border-b border-neutral-800/80 pb-2.5 text-xs font-mono text-neutral-400">
+                  <span className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-blue-500 animate-ping"></span>
+                    <span className="text-neutral-200">builder.tsx</span>
+                  </span>
+                  <span className="text-neutral-500 text-[10px]">OByt</span>
+                </div>
+
+                <div className="overflow-hidden rounded-xl bg-gradient-to-b from-[#0a1530] to-black border border-neutral-800 aspect-square flex items-center justify-center p-2 group-hover:scale-[1.03] transition-transform duration-500 shadow-inner">
+                  <img
+                    src={coderImage}
+                    alt="Samson Olatunde Developer Illustration"
+                    className="w-full h-full object-contain rounded-lg filter drop-shadow-xl"
+                  />
+                </div>
+
+                <div className="p-2.5 bg-neutral-900/70 border border-neutral-800/80 rounded-lg flex items-center justify-between text-xs font-mono">
+                  <span className="text-emerald-400 flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                    <span>CREATIVE CODER</span>
+                  </span>
+                  <span className="text-neutral-500 text-[11px]">11+ BUILDS</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Projects Grid */}
