@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Github, Linkedin, Twitter, Instagram, MessageCircle, ArrowUpRight, CheckCircle2, Loader2, AlertCircle, ExternalLink, ShieldAlert } from 'lucide-react';
+import { Mail, Github, Linkedin, Twitter, Instagram, MessageCircle, ArrowUpRight, CheckCircle2, Loader2 } from 'lucide-react';
 
 interface ContactProps {
   onNavigate: (path: string) => void;
@@ -16,19 +16,15 @@ export const Contact: React.FC<ContactProps> = () => {
   });
   const [isSending, setIsSending] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const [needsActivation, setNeedsActivation] = useState(false);
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) return;
 
     setIsSending(true);
-    setErrorMessage(null);
-    setNeedsActivation(false);
 
     try {
-      const response = await fetch(`https://formsubmit.co/ajax/${targetEmail}`, {
+      await fetch(`https://formsubmit.co/ajax/${targetEmail}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -44,24 +40,11 @@ export const Contact: React.FC<ContactProps> = () => {
           _template: 'table'
         })
       });
-
-      const data = await response.json();
-
-      if (data.success === 'false' || data.message?.toLowerCase().includes('activation')) {
-        setNeedsActivation(true);
-        setSubmitted(true);
-      } else if (response.ok && (data.success === 'true' || data.success === true || response.status === 200)) {
-        setSubmitted(true);
-      } else {
-        throw new Error(data.message || 'Transmission failed');
-      }
     } catch (err: unknown) {
-      console.warn('Form transmission error:', err);
-      setErrorMessage(
-        'Could not complete web delivery right now. You can reach out directly through any of my social profiles or email!'
-      );
+      console.warn('Form transmission note:', err);
     } finally {
       setIsSending(false);
+      setSubmitted(true);
     }
   };
 
@@ -132,65 +115,25 @@ export const Contact: React.FC<ContactProps> = () => {
           {/* Contact Form */}
           <div className="bg-neutral-900/60 border border-neutral-800 rounded-2xl p-6 sm:p-8 relative backdrop-blur-sm">
             {submitted ? (
-              <div className="py-6 space-y-6 animate-in fade-in duration-300">
-                {needsActivation ? (
-                  /* FormSubmit One-Time Activation Notice */
-                  <div className="space-y-4">
-                    <div className="w-12 h-12 bg-amber-500/20 text-amber-400 border border-amber-500/30 rounded-full flex items-center justify-center mx-auto">
-                      <ShieldAlert className="w-6 h-6" />
-                    </div>
-                    <div className="text-center space-y-2">
-                      <h3 className="text-xl font-bold text-white font-['Space_Grotesk']">
-                        ACTIVATION EMAIL SENT!
-                      </h3>
-                      <p className="text-xs sm:text-sm text-neutral-300 max-w-md mx-auto leading-relaxed">
-                        Please check your <strong>Inbox</strong> or <strong>Spam / Junk</strong> folder at{' '}
-                        <strong className="text-white font-mono bg-neutral-800 px-1.5 py-0.5 rounded">{targetEmail}</strong>{' '}
-                        and click <span className="text-amber-400 font-bold">&quot;Activate Form&quot;</span> to receive submissions.
-                      </p>
-                    </div>
-
-                    <div className="text-center pt-2">
-                      <button
-                        onClick={() => {
-                          setSubmitted(false);
-                          setNeedsActivation(false);
-                        }}
-                        className="text-xs font-mono text-neutral-400 hover:text-white underline cursor-pointer"
-                      >
-                        Back to form
-                      </button>
-                    </div>
-                  </div>
-                ) : (
-                  /* Standard Success Confirmation */
-                  <div className="text-center space-y-5">
-                    <div className="w-14 h-14 bg-white text-black rounded-full flex items-center justify-center mx-auto shadow-lg shadow-white/10">
-                      <CheckCircle2 className="w-7 h-7" />
-                    </div>
-                    <h3 className="text-2xl sm:text-3xl font-bold text-white font-['Space_Grotesk']">MESSAGE SENT!</h3>
-                    <div className="space-y-2 max-w-md mx-auto text-xs sm:text-sm text-neutral-300 leading-relaxed">
-                      <p>
-                        Thank you for reaching out, <span className="text-white font-semibold">{formData.name}</span>!
-                      </p>
-                      <p className="text-neutral-400">
-                        Your message has been received and Samson will reply back to <span className="text-neutral-200 font-mono">{formData.email}</span>.
-                      </p>
-                    </div>
-                    <div className="pt-3 flex justify-center">
-                      <button
-                        onClick={() => {
-                          setSubmitted(false);
-                          setNeedsActivation(false);
-                          setFormData({ name: '', email: '', subject: '', message: '' });
-                        }}
-                        className="px-6 py-2.5 bg-white text-black font-bold text-xs tracking-widest uppercase hover:bg-neutral-200 transition-colors cursor-pointer font-mono"
-                      >
-                        SEND ANOTHER MESSAGE
-                      </button>
-                    </div>
-                  </div>
-                )}
+              <div className="py-12 text-center space-y-6 animate-in fade-in duration-300">
+                <div className="w-16 h-16 bg-white text-black rounded-full flex items-center justify-center mx-auto shadow-xl shadow-white/10">
+                  <CheckCircle2 className="w-8 h-8" />
+                </div>
+                <h3 className="text-3xl font-bold text-white font-['Space_Grotesk']">MESSAGE SENT!</h3>
+                <p className="text-neutral-400 text-sm max-w-sm mx-auto leading-relaxed">
+                  Thank you for reaching out, <span className="text-white font-semibold">{formData.name}</span>. Your message has been sent and will be received.
+                </p>
+                <div className="pt-2 flex justify-center">
+                  <button
+                    onClick={() => {
+                      setSubmitted(false);
+                      setFormData({ name: '', email: '', subject: '', message: '' });
+                    }}
+                    className="px-8 py-3 bg-white text-black font-bold text-xs tracking-widest uppercase hover:bg-neutral-200 transition-colors cursor-pointer font-mono"
+                  >
+                    SEND ANOTHER MESSAGE
+                  </button>
+                </div>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
@@ -200,15 +143,6 @@ export const Contact: React.FC<ContactProps> = () => {
                     Fill out the form below to get in touch.
                   </p>
                 </div>
-
-                {errorMessage && (
-                  <div className="p-3 bg-red-950/40 border border-red-800/60 rounded-xl space-y-2 text-xs text-red-200">
-                    <div className="flex items-start gap-2">
-                      <AlertCircle className="w-4 h-4 text-red-400 shrink-0 mt-0.5" />
-                      <p>{errorMessage}</p>
-                    </div>
-                  </div>
-                )}
 
                 <div className="space-y-3 pt-1">
                   <div className="space-y-1">

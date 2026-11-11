@@ -31,28 +31,6 @@ export const About: React.FC<AboutProps> = ({ onNavigate }) => {
             <p className="text-neutral-400 text-sm leading-relaxed">
               Based in Jalingo, Taraba State, Nigeria, I am currently pursuing my degree in Computer Science at Taraba State University, blending academic computer science principles with hands-on web development practice.
             </p>
-
-            <div className="p-6 bg-neutral-900/60 border border-neutral-800 rounded-2xl backdrop-blur-sm space-y-4">
-              <div className="text-xs text-neutral-500 tracking-widest uppercase font-mono">QUICK FACTS</div>
-              <div className="space-y-3 text-sm">
-                <div className="flex justify-between border-b border-neutral-800/80 pb-2.5">
-                  <span className="text-neutral-400">Name</span>
-                  <span className="text-white font-mono">Samson Olatunde</span>
-                </div>
-                <div className="flex justify-between border-b border-neutral-800/80 pb-2.5">
-                  <span className="text-neutral-400">Location</span>
-                  <span className="text-white font-mono">Jalingo, Taraba State, Nigeria</span>
-                </div>
-                <div className="flex justify-between border-b border-neutral-800/80 pb-2.5">
-                  <span className="text-neutral-400">Education</span>
-                  <span className="text-white font-mono">Taraba State University (Computer Science)</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-neutral-400">Focus</span>
-                  <span className="text-white font-mono">Frontend & UI Design</span>
-                </div>
-              </div>
-            </div>
           </div>
 
           {/* Minimalist Tech Aesthetic Card */}
