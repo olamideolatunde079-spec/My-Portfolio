@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Github, Linkedin, Twitter, Instagram, MessageCircle, ArrowUpRight, CheckCircle2, Loader2 } from 'lucide-react';
+import { Mail, Github, Linkedin, Twitter, Instagram, MessageCircle, ArrowUpRight, CheckCircle2 } from 'lucide-react';
 
 interface ContactProps {
   onNavigate: (path: string) => void;
@@ -14,38 +14,35 @@ export const Contact: React.FC<ContactProps> = () => {
     subject: '',
     message: ''
   });
-  const [isSending, setIsSending] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) return;
 
-    setIsSending(true);
+    // Immediately show the success tick screen without waiting for network lag
+    setSubmitted(true);
 
-    try {
-      await fetch(`https://formsubmit.co/ajax/${targetEmail}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          _replyto: formData.email,
-          subject: formData.subject || `New Portfolio Message from ${formData.name}`,
-          message: formData.message,
-          _subject: `Portfolio Message: ${formData.subject || formData.name}`,
-          _template: 'table'
-        })
-      });
-    } catch (err: unknown) {
-      console.warn('Form transmission note:', err);
-    } finally {
-      setIsSending(false);
-      setSubmitted(true);
-    }
+    // Dispatch transmission in the background
+    fetch(`https://formsubmit.co/ajax/${targetEmail}`, {
+      method: 'POST',
+      keepalive: true,
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        name: formData.name,
+        email: formData.email,
+        _replyto: formData.email,
+        subject: formData.subject || `New Portfolio Message from ${formData.name}`,
+        message: formData.message,
+        _subject: `Portfolio Message: ${formData.subject || formData.name}`,
+        _template: 'table'
+      })
+    }).catch((err) => {
+      console.warn('Background delivery note:', err);
+    });
   };
 
   const socials = [
@@ -203,20 +200,10 @@ export const Contact: React.FC<ContactProps> = () => {
                   <div className="pt-2">
                     <button
                       type="submit"
-                      disabled={isSending}
-                      className="w-full py-3.5 bg-white text-black font-bold text-xs tracking-widest uppercase hover:bg-neutral-200 transition-colors flex items-center justify-center gap-2 cursor-pointer font-mono disabled:opacity-60 disabled:cursor-not-allowed"
+                      className="w-full py-3.5 bg-white text-black font-bold text-xs tracking-widest uppercase hover:bg-neutral-200 transition-colors flex items-center justify-center gap-2 cursor-pointer font-mono"
                     >
-                      {isSending ? (
-                        <>
-                          <Loader2 className="w-4 h-4 animate-spin" />
-                          <span>SENDING MESSAGE...</span>
-                        </>
-                      ) : (
-                        <>
-                          <span>SEND MESSAGE</span>
-                          <ArrowUpRight className="w-4 h-4" />
-                        </>
-                      )}
+                      <span>SEND MESSAGE</span>
+                      <ArrowUpRight className="w-4 h-4" />
                     </button>
                   </div>
                 </div>
