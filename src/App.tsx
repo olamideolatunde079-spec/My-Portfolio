@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
-import { ParticleWave3D } from './components/ParticleWave3D';
+import { GridParticlesBackground } from './components/GridParticlesBackground';
 import { CustomCursor } from './components/CustomCursor';
 import { Home } from './pages/Home';
 import { About } from './pages/About';
@@ -41,7 +41,7 @@ export default function App() {
   return (
     <div className="bg-black text-white min-h-screen font-sans selection:bg-white selection:text-black relative">
       <CustomCursor />
-      <ParticleWave3D />
+      <GridParticlesBackground />
       <Navbar currentPath={currentPath} onNavigate={handleNavigate} />
       <main className="relative z-10">
         {renderPage()}
