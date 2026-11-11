@@ -4,6 +4,8 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { defineConfig } from 'vite';
 
+process.env.VITE_CONFIG_NATIVE_IGNORE_WARNING = 'true';
+
 const rootDir = fileURLToPath(new URL('.', import.meta.url));
 
 export default defineConfig(() => {
